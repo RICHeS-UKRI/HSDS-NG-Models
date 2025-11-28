@@ -3,7 +3,7 @@ name: Update READMEs from models
 on:
   push:
     paths:
-      - 'Models/**/*.tsv'
+      - 'models/**/*.tsv'
   workflow_dispatch:
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
       - name: Determine latest ng_models TSV (if any) and fetch Mermaid
         run: |
           set -e
-          cd Models
+          cd models
 
           # Find ng_models_v*.tsv files
           NG_FILES=$(ls ng_models_v*.tsv 2>/dev/null || true)
@@ -39,7 +39,7 @@ jobs:
           RAW_BASE="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_REF_NAME}"
           echo "RAW_BASE=$RAW_BASE" >> $GITHUB_ENV
 
-          TSV_PATH="Models/${LATEST}"
+          TSV_PATH="models/${LATEST}"
           RAW_URL="${RAW_BASE}/${TSV_PATH}"
 
           echo "Fetching Mermaid for ${RAW_URL}"
@@ -63,7 +63,7 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git config --global user.name "github-actions"
             git config --global user.email "github-actions[bot]@users.noreply.github.com"
-            git add README.md Models/README.md Models/*/README.md || true
+            git add README.md models/README.md models/*/README.md || true
             git commit -m "Auto-update READMEs from model TSVs"
             git push
           else
