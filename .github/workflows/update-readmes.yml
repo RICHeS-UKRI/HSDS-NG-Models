@@ -30,19 +30,17 @@ jobs:
           set -e
           cd models
 
-          # Find ng_models_v*.tsv files
           NG_FILES=$(ls ng_models_v*.tsv 2>/dev/null || true)
           if [ -z "$NG_FILES" ]; then
             echo "No ng_models_v*.tsv found, skipping Mermaid fetch."
             exit 0
           fi
 
-          # Sort by version and pick the latest (simple sort; filenames should sort numerically if consistent)
           LATEST=$(printf "%s\n" $NG_FILES | sort -V | tail -n1)
           echo "Latest ng_models file: $LATEST"
 
-          # Build raw URL base from env
-          RAW_BASE="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_REF_NAME}"
+          # Build raw URL base including full ref, e.g. refs/heads/main
+          RAW_BASE="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_REF}"
           echo "RAW_BASE=$RAW_BASE" >> $GITHUB_ENV
 
           TSV_PATH="models/${LATEST}"
@@ -52,6 +50,7 @@ jobs:
           curl -s "https://research.nationalgallery.org.uk/lab/modelling/?url=${RAW_URL}&getmermaid" \
             -o ng_models_mermaid.mmd || true
 
+
       - name: Install dependencies (if any)
         run: |
           python -m pip install --upgrade pip
@@ -59,9 +58,10 @@ jobs:
 
       - name: Run README generator
         env:
-          RAW_BASE: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}
+          RAW_BASE: ${{ env.RAW_BASE }}
         run: |
           python scripts/update_readmes.py
+
 
       - name: Commit and push changes (if any)
         run: |
