@@ -6,8 +6,14 @@ permissions:
 on:
   push:
     paths:
-      - 'models/**/*.tsv'
+      - 'models/*.tsv'                      # top-level NG model TSVs
+      - 'models/**/*.tsv'                  # versioned model TSVs in subfolders
+      - 'scripts/update_readmes.py'        # generator logic
+      - 'README.template.md'               # top-level template
+      - 'models/README.template.md'        # models index template
+      - '.github/workflows/update-readmes.yml'  # workflow definition
   workflow_dispatch:
+
 
 jobs:
   update-readmes:
