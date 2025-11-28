@@ -1,0 +1,71 @@
+name: Update READMEs from models
+
+on:
+  push:
+    paths:
+      - 'Models/**/*.tsv'
+  workflow_dispatch:
+
+jobs:
+  update-readmes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Determine latest ng_models TSV (if any) and fetch Mermaid
+        run: |
+          set -e
+          cd Models
+
+          # Find ng_models_v*.tsv files
+          NG_FILES=$(ls ng_models_v*.tsv 2>/dev/null || true)
+          if [ -z "$NG_FILES" ]; then
+            echo "No ng_models_v*.tsv found, skipping Mermaid fetch."
+            exit 0
+          fi
+
+          # Sort by version and pick the latest (simple sort; filenames should sort numerically if consistent)
+          LATEST=$(printf "%s\n" $NG_FILES | sort -V | tail -n1)
+          echo "Latest ng_models file: $LATEST"
+
+          # Build raw URL base from env
+          RAW_BASE="https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_REF_NAME}"
+          echo "RAW_BASE=$RAW_BASE" >> $GITHUB_ENV
+
+          TSV_PATH="Models/${LATEST}"
+          RAW_URL="${RAW_BASE}/${TSV_PATH}"
+
+          echo "Fetching Mermaid for ${RAW_URL}"
+          curl -s "https://research.nationalgallery.org.uk/lab/modelling/?url=${RAW_URL}&getmermaid" \
+            -o ng_models_mermaid.mmd || true
+
+      - name: Install dependencies (if any)
+        run: |
+          python -m pip install --upgrade pip
+          # No external dependencies for now
+
+      - name: Run README generator
+        env:
+          RAW_BASE: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.ref_name }}
+        run: |
+          python scripts/update_readmes.py
+
+      - name: Commit and push changes (if any)
+        run: |
+          set -e
+          if [ -n "$(git status --porcelain)" ]; then
+            git config --global user.name "github-actions"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            git add README.md Models/README.md Models/*/README.md || true
+            git commit -m "Auto-update READMEs from model TSVs"
+            git push
+          else
+            echo "No changes to commit."
+          fi
