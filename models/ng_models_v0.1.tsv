@@ -1,0 +1,7 @@
+//Flowchart LR
+
+Heritage Sample\nS13_Sample and\nE19_Physical_object	O5i_was_removed_by (1 to 1)	Sample Taking\nS2_Sample_Taking	|event
+Sample Taking\nS2_Sample_Taking	O3_sampled_from (1 to 1)	Heritage Object\nE22_Human-Made Object	|object
+
+Heritage Sample\nS13_Sample and\nE19_Physical_object	O1i_was_diminished_by (0 to 1)	Sample Splitting\nS24_Sample_splitting	|event
+Sample Splitting\nS24_Sample_splitting	O5_removed (1 to n)	Heritage Sample\nS13_Sample and\nE19_Physical_object#-1	|object
