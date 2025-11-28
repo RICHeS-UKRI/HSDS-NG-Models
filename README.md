@@ -1,18 +1,24 @@
-# CIDOC CRM-based models for paintings and samples
+# Heritage Science Modelling at the National Gallery
 
-This repository collects semantic models (as simple TSV triples) for use with the National Gallery Dynamic Modeller and integration into ResearchSpace.
+This repository defines a set of semantic models describing paintings, samples, and associated
+heritage-science entities. The goal is to support clear documentation, interoperability, and
+FAIR-aligned data sharing across the National Gallery, RICHeS partners, and potential future
+collaborations such as the ECHOES project.
 
-## Overall NG Models
+All models are defined as **CIDOC CRM-aligned** triple structures using simple TSV files and are
+designed for use with the **National Gallery Dynamic Modeller**. These models support ongoing work
+to prepare and publish research data through platforms such as **ResearchSpace** and the **HSDS**
+(UKRI RICHeS) repository.
 
-The current NG-wide model can be explored directly in the Dynamic Modeller:
+Work on these models is supported by **UKRI RICHeS – Heritage Science Data Service (HSDS)** funding,
+with contributions from researchers, conservators, and technical specialists across partner
+institutions. Additional collaborators will be acknowledged as models continue to evolve.
 
+---
 
-- [Open in Dynamic Modeller](https://research.nationalgallery.org.uk/lab/modelling/?url=https://raw.githubusercontent.com/RICHeS-UKRI/HSDS-NG-Models/refs/heads/main/models/ng_models_v0.1.tsv)
+## Visual Overview of All Models
 
-
-### Mermaid overview
-
-
+<!-- BEGIN AUTO: NG-MODEL-VISUAL -->
 ```mermaid
 flowchart LR
 classDef object stroke:#2C5D98,fill:#2C5D98,color:white,rx:5px,ry:5px;
@@ -39,18 +45,50 @@ class O4 object;
 O3["Sample Splitting\nS24_Sample_splitting"] -- "O5_removed #40;1 to n#41;" -->O4["Heritage Sample\nS13_Sample and\nE19_Physical_object"]
 ;
 ```
+<!-- END AUTO: NG-MODEL-VISUAL -->
 
-## Models
+---
 
-The following models are defined under the `models/` folder. Each section lists the available versions and links into the Dynamic Modeller.
+## Available Models
 
-<details>
-<summary>Samples Model: <a href="https://research.nationalgallery.org.uk/lab/modelling/?url=https://raw.githubusercontent.com/RICHeS-UKRI/HSDS-NG-Models/refs/heads/main/models/samples/sample_model_v1.1.tsv">1.1</a></summary>
+The following models are defined in this repository.  
+Each entry links to its model page, the latest raw TSV file, and the interactive visualisation
+in the Dynamic Modeller.
 
-## Samples Model Details
+<!-- BEGIN AUTO: MODEL-LIST -->
+| Model | Folder | Latest TSV | Visualisation |
+|-------|--------|-----------|---------------|
+| Samples Model | [`models/samples`](models/samples) | [v1.1](https://raw.githubusercontent.com/RICHeS-UKRI/HSDS-NG-Models/refs/heads/main/models/samples/sample_model_v1.1.tsv) | [Open](https://research.nationalgallery.org.uk/lab/modelling/?url=https://raw.githubusercontent.com/RICHeS-UKRI/HSDS-NG-Models/refs/heads/main/models/samples/sample_model_v1.1.tsv) |
+<!-- END AUTO: MODEL-LIST -->
 
-| | Date | Author | Model | Comment |
-| :-----------: | :-----------: | :-----------: | :-----------: | ----------- |
-| :heavy_check_mark: |  |  | [1.1](https://research.nationalgallery.org.uk/lab/modelling/?url=https://raw.githubusercontent.com/RICHeS-UKRI/HSDS-NG-Models/refs/heads/main/models/samples/sample_model_v1.1.tsv) |  |
-| | <img width=325 /> |<img width=175 /> | <img width=60 /> | <img width=500 /> |
-</details>
+---
+
+## How to Use These Models
+
+1. Open any TSV file directly in the Dynamic Modeller using the “Visualisation” links above.  
+2. Review the model-specific page to explore version history and related documentation.  
+3. Use these models as a starting point for:
+   - ResearchSpace ingestion
+   - FAIR data packaging in HSDS
+   - ECHOES Digital Twin prototyping
+   - Internal NG interoperability work
+4. Models are intentionally simple to enable discussion and refinement.  
+   CIDOC CRM alignment will be strengthened in future iterations.
+
+---
+
+## Design Principles
+
+- **CIDOC CRM v7.1.3 alignment**
+- **Modular, extensible structure**
+- **Transparent and easy to review**
+- **Supports FAIR Digital Object approaches**
+- **Designed for cross-project reusability**
+
+---
+
+## Acknowledgements
+
+This work is supported by **UKRI – RICHeS HSDS** and builds on ongoing collaboration with the
+National Gallery’s Heritage Science team and wider partners.  
+Additional contributors will be acknowledged as the models evolve.
