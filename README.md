@@ -25,24 +25,24 @@ classDef object stroke:#2C5D98,fill:#2C5D98,color:white,rx:5px,ry:5px;
 classDef event stroke:#5C811F,fill:#5C811F,color:white,rx:5px,ry:5px;
 
 
-O0("Heritage Sample\nS13_Sample and\nE19_Physical_object")
+O0("Heritage Sample<br>S13_Sample and<br>E19_Physical_object")
 class O0 object;
 
-O1("Sample Taking\nS2_Sample_Taking")
+O1("Sample Taking<br>S2_Sample_Taking")
 class O1 event;
-O0["Heritage Sample\nS13_Sample and\nE19_Physical_object"] -- "O5i_was_removed_by #40;1 to 1#41;" -->O1["Sample Taking\nS2_Sample_Taking"]
+O0["Heritage Sample<br>S13_Sample and<br>E19_Physical_object"] -- "O5i_was_removed_by #40;1 to 1#41;" -->O1["Sample Taking<br>S2_Sample_Taking"]
 
-O2("Heritage Object\nE22_Human-Made Object")
+O2("Heritage Object<br>E22_Human-Made Object")
 class O2 object;
-O1["Sample Taking\nS2_Sample_Taking"] -- "O3_sampled_from #40;1 to 1#41;" -->O2["Heritage Object\nE22_Human-Made Object"]
+O1["Sample Taking<br>S2_Sample_Taking"] -- "O3_sampled_from #40;1 to 1#41;" -->O2["Heritage Object<br>E22_Human-Made Object"]
 
-O3("Sample Splitting\nS24_Sample_splitting")
+O3("Sample Splitting<br>S24_Sample_splitting")
 class O3 event;
-O0["Heritage Sample\nS13_Sample and\nE19_Physical_object"] -- "O1i_was_diminished_by #40;0 to 1#41;" -->O3["Sample Splitting\nS24_Sample_splitting"]
+O0["Heritage Sample<br>S13_Sample and<br>E19_Physical_object"] -- "O1i_was_diminished_by #40;0 to 1#41;" -->O3["Sample Splitting<br>S24_Sample_splitting"]
 
-O4("Heritage Sample\nS13_Sample and\nE19_Physical_object#-1")
+O4("Heritage Sample<br>S13_Sample and<br>E19_Physical_object#-1")
 class O4 object;
-O3["Sample Splitting\nS24_Sample_splitting"] -- "O5_removed #40;1 to n#41;" -->O4["Heritage Sample\nS13_Sample and\nE19_Physical_object"]
+O3["Sample Splitting<br>S24_Sample_splitting"] -- "O29_removed_sub-sample #40;1 to n#41;" -->O4["Heritage Sample<br>S13_Sample and<br>E19_Physical_object"]
 ;
 ```
 <!-- END AUTO: NG-MODEL-VISUAL -->
