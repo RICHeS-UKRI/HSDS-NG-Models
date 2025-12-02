@@ -1,72 +1,71 @@
-//flowchart LR																									
-																									
-S13/E19: Sample	tooltip	A discrete physical fragment or portion removed from the painting for study or conservation.	object-fs32|																						
-S13/E19: Sample	has note	Document Note: Sample Model Overview																							
-Document Note: Sample Model Overview	tooltip	This model defines the Sample (S13) as a discrete physical fragment removed from a heritage object for study. It brings together identification, classification, and contextual data, linking each sample to its source object, the sampling event, and any subsequent analytical or modification events. Ownership, custody, and storage are documented to support traceability, while descriptive and measurement links ensure that both qualitative and quantitative observations remain connected to their physical origin.																							
-																									
-//subgraph Linked Entities																									
-S2: Sample Taking	tooltip	The event during which the sample was physically removed from its source object.	event-fs24|																						
-E22: Painting	tooltip	The artwork or object from which the sample originated.	object-fs24|																						
-S13/E19: Parent Sample	tooltip	The artwork or object from which the sample originated.	object-fs24|																						
-E53: Storage Location	tooltip	The physical place where the sample is currently housed or permanently stored.	place-fs24|																						
-E39: Institution or Person	tooltip	The legal owner of the sample.	actor-fs24|																						
-E39: Institution or Person#-1	tooltip	The institution responsible for the care, storage, or management of the physical sample.	actor-fs24|																						
-E31: Sample Documents	tooltip	Any document, note, report, or publication describing or relating to the sample.	document-fs24|																						
-E16: Measurement	tooltip	An event in which one or more quantitative properties of the sample were measured.	event-fs24|																						
-S27: Observation	tooltip	An event in which qualitative or visual properties of the sample were examined.	event-fs24|																						
-E11: Sample Modification	tooltip	An event that altered the sample after its initial removal, such as preparation, embedding, or coating.	event-fs24|																						
-EX_Digital_Image: Main Sample Image	tooltip	Stuff	digital2-fs24|																						
-EX_Digital_Image: Sample Image	tooltip	Stuff	digital2-fs24|																						
-//end sg1																									
-																									
-S13/E19: Sample	P48_has_preferred_identifier (1 to 1)	E42: Persistent Identifier (e.g. IGSN)	|url																						
-//E42: Persistent Identifier (e.g. IGSN)	P2_has_type (0 to n)	aat:300387580																							
-E42: Persistent Identifier (e.g. IGSN)	tooltip	For samples not defined will a fully resolvable PID like an IGSN the prefered ID is likely to be the same as or based on the E41: Sample Label/No/ID																							
-																									
-S13/E19: Sample	P1_is_identified_by (1 to 1)	E41: Unique System Label	|name																						
-E41: Unique System Label	tooltip	ResearchSpace required label.																							
-E41: Unique System Label	has note	Automatic: Preferred Painting ID - Sample Label																							
-																									
-S13/E19: Sample	P67i_is_referred_to_by (0 to n)	E73: Description Text	|literal																						
-E73: Description Text	P45i_is incorporated in (0 to n)	E31: Sample Documents	|document																						
-S13/E19: Sample	P70i_is_documented_in (0 to n)	E31: Sample Documents	|document																						
-																									
-//S13/E19: Sample	P1_is_identified_by (1 to 1)	E42: Custodian Identifier	|url																						
-//E42: Custodian Identifier	tooltip	A locally assigned identifier or code used by the institution responsible for managing the physical sample.																							
-S13/E19: Sample	P1_is_identified_by (0 to n)	E42: Alternative Identifier	|url																						
-E42: Alternative Identifier	tooltip	A locally assigned identifier or code used by the institution responsible for managing the physical sample by which the sample may be known in external systems, publications, or legacy records.																							
-																									
-S13/E19: Sample	P1_is_identified_by (1 to 1)	E41: Sample Label/No/ID	|name																						
-E41: Sample Label/No/ID	tooltip	A human-readable name or number used to identify the sample in documentation or images, typically visible on labels or slides.																							
-																									
-S13/E19: Sample	P2_has_type (1 to 1)	E55: sample type	|type																						
-E55: sample type	tooltip	Classification of the physical nature of the sample. terms could include concepts like: scraping, micro-scraping, single fragment, micro-fragment, stratigraphic paint flake, surface coating flake, collection of fragments, bulk sample, powdered sample, thin film / smear, binding medium sample.																							
-																									
-S13/E19: Sample	P2_has_type (1 to 1)	E55: sample format	|type																						
-E55: sample format	tooltip	Classification of how the sample has been organised or modified for storage or examination. terms could include concepts like: unmounted flake, resin-embedded block, polished cross-section, carbon-coated cross-section, gold-coated cross-section, dispersion, thin section, microtome thin section, KBr pellet, diamond cell / compression cell, SEM stub mount, grain mount, filter mount, mATR mount.																							
-																									
-S13/E19: Sample	P2_has_type (0 to n)	E55: sample keywords	|type																						
-E55: sample keywords	tooltip	Keywords or classification terms (e.g., class, technique, composition).																							
-																									
-S13/E19: Sample	P43_has_dimension (1 to n)	E54: Sample size	|dims																						
-E54: Sample size	tooltip	Dimensions or size class of the sample, controlled list:<br/>micro-sample (< 0.01 m),<br/>small-sample (0.01 – 0.1 m),<br/>medium-sample (0.1 – 0.3 m),<br/>large-sample (0.3 – 1.0 m),<br/>very-large-fragment (> 1.0 m)																							
-//E54: Sample size	P2_has_type	aat:300055642																							
-																									
-S13/E19: Sample	P44_has_condition (1 to 1)	E3: Condition state	|period																						
-E3: Condition state	P2_has_type (1 to 1)	E55:condition state type	|type																						
-E55:condition state type	tooltip	Classification of how well the sample has been preserved, or if it has been damaged etc. terms could include concepts like: stable / intact, damaged, diminished, partially consumed, consumed, exhausted, destroyed, altered by preparation, altered by analysis, contaminated, lost, archived, pending preparation.																							
-																									
-S13/E19: Sample	P52_has_current_owner (1 to n)	E39: Institution or Person	|actor																						
-S13/E19: Sample	P50_has_current_keeper (1 to 1)	E39: Institution or Person#-1	|actor																						
-S13/E19: Sample	P54_has_current_permanent_location (1 to 1)	E53: Storage Location	|place																						
-																									
-S13/E19: Sample	O5i_was_removed_by (1 to 1)	S2: Sample Taking	|event																						
-S13/E19: Sample	O3_sampled_from (1 to 1)	E22: Painting	|object																						
-S13/E19: Sample	O3_sampled_from (0 to 1)	S13/E19: Parent Sample	|object																						
-																									
-S13/E19: Sample	O42i_was_measured_by (0 to n)	E16: Measurement																							
-S13/E19: Sample	O35i_was_observed_by (0 to n)	S27: Observation																							
-S13/E19: Sample	P31i_was_modified_by (0 to n)	E11: Sample Modification																							
-																									
-S13/E19: Sample	PX_has_main_representation (0 to 1)	EX_Digital_Image: Main Sample Image																							
-S13/E19: Sample	P138i_has_representation (0 to n)	EX_Digital_Image: Sample Image																							
+//flowchart LR			
+
+S13/E19: Sample	tooltip	A discrete physical fragment or portion removed from the painting for study or conservation.	object-fs32|
+S13/E19: Sample#-1	tooltip	A new discrete physical fragment or portion separated from an existing sample for study or conservation.	object-fs32|
+S13/E19: Sample	has note	Document Note: Sample Model Overview	
+Document Note: Sample Model Overview	tooltip	This model defines the Sample (S13) as a discrete physical fragment removed from a heritage object for study. It brings together identification, classification, and contextual data, linking each sample to its source object, the sampling event, and any subsequent analytical or modification events. Ownership, custody, and storage are documented to support traceability, while descriptive and measurement links ensure that both qualitative and quantitative observations remain connected to their physical origin.	
+
+//subgraph Linked Entities			
+S2: Sample Taking	tooltip	The event during which the sample was physically removed from its source object.	event-fs24|
+S24: Sample Splitting	tooltip	The event during which a new child sample was physically removed from its parent sample.	event-fs24|
+E53: Storage Location	tooltip	The physical place where the sample is currently housed or permanently stored.	place-fs24|
+E39: Institution or Person	tooltip	The legal owner of the sample.	actor-fs24|
+E39: Institution or Person#-1	tooltip	The institution responsible for the care, storage, or management of the physical sample.	actor-fs24|
+E31: Sample Documents	tooltip	Any document, note, report, or publication describing or relating to the sample.	document-fs24|
+E16: Measurement	tooltip	An event in which one or more quantitative properties of the sample were measured.	event-fs24|
+S27: Observation	tooltip	An event in which qualitative or visual properties of the sample were examined.	event-fs24|
+E11: Sample Modification	tooltip	An event that altered the sample after its initial removal, such as preparation, embedding, or coating.	event-fs24|
+EX_Digital_Image: Main Sample Image	tooltip	Stuff	digital2-fs24|
+EX_Digital_Image: Sample Image	tooltip	Stuff	digital2-fs24|
+//end sg1			
+
+S13/E19: Sample	P48_has_preferred_identifier (1 to 1)	E42: Persistent Identifier (e.g. IGSN)	|url
+E42: Persistent Identifier (e.g. IGSN)	tooltip	For samples not defined will a fully resolvable PID like an IGSN the prefered ID is likely to be the same as or based on the E41: Sample Label/No/ID	
+
+S13/E19: Sample	P1_is_identified_by (1 to 1)	E41: Unique System Label	|name
+E41: Unique System Label	tooltip	ResearchSpace required label.	
+E41: Unique System Label	has note	Automatic: Preferred Painting ID - Sample Label	
+
+S13/E19: Sample	P67i_is_referred_to_by (0 to n)	E73: Description Text	|literal
+E73: Description Text	P45i_is incorporated in (0 to n)	E31: Sample Documents	|document
+S13/E19: Sample	P70i_is_documented_in (0 to n)	E31: Sample Documents	|document
+
+S13/E19: Sample	P1_is_identified_by (0 to n)	E42: Alternative Identifier	|url
+E42: Alternative Identifier	tooltip	A locally assigned identifier or code used by the institution responsible for managing the physical sample by which the sample may be known in external systems, publications, or legacy records.	
+
+S13/E19: Sample	P1_is_identified_by (1 to 1)	E41: Sample Label/No/ID	|name
+E41: Sample Label/No/ID	tooltip	A human-readable name or number used to identify the sample in documentation or images, typically visible on labels or slides.	
+
+S13/E19: Sample	P2_has_type (1 to 1)	E55: sample type	|type
+E55: sample type	tooltip	Classification of the physical nature of the sample. terms could include concepts like: scraping, micro-scraping, single fragment, micro-fragment, stratigraphic paint flake, surface coating flake, collection of fragments, bulk sample, powdered sample, thin film / smear, binding medium sample.	
+
+S13/E19: Sample	P2_has_type (1 to 1)	E55: sample format	|type
+E55: sample format	tooltip	Classification of how the sample has been organised or modified for storage or examination. terms could include concepts like: unmounted flake, resin-embedded block, polished cross-section, carbon-coated cross-section, gold-coated cross-section, dispersion, thin section, microtome thin section, KBr pellet, diamond cell / compression cell, SEM stub mount, grain mount, filter mount, mATR mount.	
+
+S13/E19: Sample	P2_has_type (0 to n)	E55: sample keywords	|type
+E55: sample keywords	tooltip	Keywords or classification terms (e.g., class, technique, composition).	
+
+S13/E19: Sample	P43_has_dimension (1 to n)	E54: Sample size	|dims
+E54: Sample size	tooltip	Dimensions or size class of the sample, controlled list:<br/>micro-sample (< 0.01 m),<br/>small-sample (0.01 – 0.1 m),<br/>medium-sample (0.1 – 0.3 m),<br/>large-sample (0.3 – 1.0 m),<br/>very-large-fragment (> 1.0 m)	
+
+S13/E19: Sample	P44_has_condition (1 to 1)	E3: Condition state	|period
+E3: Condition state	P2_has_type (1 to 1)	E55:condition state type	|type
+E55:condition state type	tooltip	Classification of how well the sample has been preserved, or if it has been damaged etc. terms could include concepts like: stable / intact, damaged, diminished, partially consumed, consumed, exhausted, destroyed, altered by preparation, altered by analysis, contaminated, lost, archived, pending preparation.	
+
+S13/E19: Sample	P52_has_current_owner (1 to n)	E39: Institution or Person	|actor
+S13/E19: Sample	P50_has_current_keeper (1 to 1)	E39: Institution or Person#-1	|actor
+S13/E19: Sample	P54_has_current_permanent_location (1 to 1)	E53: Storage Location	|place
+
+S13/E19: Sample	O5i_was_removed_by (1 to 1)	S2: Sample Taking	|event
+S13/E19: Sample	O27i_was_source_for (0 to n)	S24: Sample Splitting	|event
+S13/E19: Sample	O1i_was_diminished_by (0 to n)	S24: Sample Splitting	|event
+S24: Sample Splitting	O29_removed_sub-sample (1 to n)	S13/E19: Sample#-1	|object
+E22: Painting	tooltip	The artwork or object from which the sample originated.	object-fs24|
+S2: Sample Taking	O3_sampled_from (1 to 1)	E22: Painting	|object
+
+S13/E19: Sample	O24i_was_measured_by (0 to n)	E16: Measurement	
+S13/E19: Sample	O8i_was_observed_by (0 to n)	S27: Observation	
+S13/E19: Sample	P31i_was_modified_by (0 to n)	E11: Sample Modification	
+
+S13/E19: Sample	PX_has_main_representation (0 to 1)	EX_Digital_Image: Main Sample Image	
+S13/E19: Sample	P138i_has_representation (0 to n)	EX_Digital_Image: Sample Image	
