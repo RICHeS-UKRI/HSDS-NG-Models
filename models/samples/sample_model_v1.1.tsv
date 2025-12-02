@@ -1,11 +1,11 @@
-//flowchart LR			
+//flowchart LR
 
 S13/E19: Sample	tooltip	A discrete physical fragment or portion removed from the painting for study or conservation.	object-fs32|
 S13/E19: Sample#-1	tooltip	A new discrete physical fragment or portion separated from an existing sample for study or conservation.	object-fs32|
 S13/E19: Sample	has note	Document Note: Sample Model Overview	
 Document Note: Sample Model Overview	tooltip	This model defines the Sample (S13) as a discrete physical fragment removed from a heritage object for study. It brings together identification, classification, and contextual data, linking each sample to its source object, the sampling event, and any subsequent analytical or modification events. Ownership, custody, and storage are documented to support traceability, while descriptive and measurement links ensure that both qualitative and quantitative observations remain connected to their physical origin.	
 
-//subgraph Linked Entities			
+//subgraph Linked Entities
 S2: Sample Taking	tooltip	The event during which the sample was physically removed from its source object.	event-fs24|
 S24: Sample Splitting	tooltip	The event during which a new child sample was physically removed from its parent sample.	event-fs24|
 E53: Storage Location	tooltip	The physical place where the sample is currently housed or permanently stored.	place-fs24|
@@ -17,7 +17,7 @@ S27: Observation	tooltip	An event in which qualitative or visual properties of t
 E11: Sample Modification	tooltip	An event that altered the sample after its initial removal, such as preparation, embedding, or coating.	event-fs24|
 EX_Digital_Image: Main Sample Image	tooltip	Stuff	digital2-fs24|
 EX_Digital_Image: Sample Image	tooltip	Stuff	digital2-fs24|
-//end sg1			
+//end sg1
 
 S13/E19: Sample	P48_has_preferred_identifier (1 to 1)	E42: Persistent Identifier (e.g. IGSN)	|url
 E42: Persistent Identifier (e.g. IGSN)	tooltip	For samples not defined will a fully resolvable PID like an IGSN the prefered ID is likely to be the same as or based on the E41: Sample Label/No/ID	
@@ -64,7 +64,7 @@ E22: Painting	tooltip	The artwork or object from which the sample originated.	ob
 S2: Sample Taking	O3_sampled_from (1 to 1)	E22: Painting	|object
 
 S13/E19: Sample	O24i_was_measured_by (0 to n)	E16: Measurement	
-S13/E19: Sample	O8i_was_observed_by (0 to n)	S27: Observation	
+S13/E19: Sample	O35i_was_observed_by (0 to n)	S27: Observation	
 S13/E19: Sample	P31i_was_modified_by (0 to n)	E11: Sample Modification	
 
 S13/E19: Sample	PX_has_main_representation (0 to 1)	EX_Digital_Image: Main Sample Image	
