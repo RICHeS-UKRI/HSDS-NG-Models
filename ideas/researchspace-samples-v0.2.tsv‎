@@ -1,0 +1,99 @@
+//Flowchart LR
+
+//subgraph //Painting
+Painting	tooltip	Please note that it is possible that the sample site may be connected directly to a part of an object as well as the full object. object|
+Painting	rso:PX_has_main_representation	Painting - Annotation Image	|digital2
+Painting	P138i has representation	Painting - Annotation Image	|digital2
+Painting - Annotation Image	tooltip	This image may or may not be the main image, but it will be the one that has been selected to be the foundation of annotations of this type.
+Painting	P70i is documented in	Reports, Documents and Summaries#-1	|document
+//end sg2-5-5
+
+//subgraph //Sampling Activity
+Sampling Activity	P1 is identified by	ResearchSpace Name - Sample Activity	event|name
+ResearchSpace Name - Sample Activity	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
+Sampling Activity	P48 has preferred identifier	Preferred identifier#-1	|url
+Preferred identifier#-1	tooltip	Optional local or externally resolving ID - additional IDs may not be required.
+Sampling Activity	P1 is identified by	Other identifiers#-1	|name
+Sampling Activity	P17 was motivated by	Reason for Sampling	|po
+Sampling Activity	P67i is referred to by	Description#-1	|io
+Sampling Activity	P33 used specific technique	Sampling Procedure	|document
+Sampling Activity	P70i is documented in	Reports, Documents and Summaries#-2	|document
+Sampling Activity	P01i is domain of	PC14 carried out by	|actor_bn
+PC14 carried out by	P02 has range	Analyst#-1	|actor
+//end sg2-5-5
+
+Sampling Activity	P16 used specific object	Painting	|object
+Sampling Activity	P9 consists of	Sample Taking	|event
+Sampling Activity	P4 has time-span	Time-Span	|period
+
+//subgraph //timespan
+Time-Span	P1 is identified by	ResearchSpace Name - Time-Span	event|name
+ResearchSpace Name - Time-Span	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
+Time-Span	P82 at some time within	Event Date	|literal
+Time-Span	P82a begin of the begin	Event Date	|literal
+Time-Span	P82b end of the end	Event Date	|literal
+//end sg2-5-10
+
+//subgraph //Sample Taking
+Sample Taking	P1 is identified by	ResearchSpace Name - Sample Taking	event|name
+ResearchSpace Name - Sample Taking	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
+Sample Taking	P48 has preferred identifier	Preferred identifier#-2	event|url
+Preferred identifier#-2	tooltip	Optional local or externally resolving ID - additional IDs may not be required.
+Sample Taking	P1 is identified by	Other identifiers#-2	|name
+Sample Taking	P7 took place at	Organisation#-1	|place
+Sample Taking	P70i is documented in	Reports, Documents and Summaries#-5	|document
+
+// By default these are expected to be blank as the reason and description will be covered in the Activity, but it might not always be the case.
+Sample Taking	P17 was motivated by	Reason for Sampling#-2	|po
+Sample Taking	P67i is referred to by	Description#-2	|io
+Sample Taking	P33 used specific technique	Sampling Procedure#-2	|document
+
+// Default is the taking shares the same timespan as the activity but this might not be the case
+Sample Taking	P4 has time-span	Time-Span	|period
+Sample Taking	P01i is domain of	PC14 carried out by#-2	|actor_bn
+PC14 carried out by#-2	P02 has range	Analyst#-2	|actor
+//end sg2-5-5
+
+Sample Taking	O3 sampled from	Sampling Site	|digital2
+Sample Taking	O4 sampled at	Sampling Place	|place
+Sample Taking	O5 removed	Sample	event|object
+Sample Taking	O3 sampled from	Painting	|object
+
+//subgraph //Sampling Site
+Sampling Site	P1 is identified by	ResearchSpace Name - Sampling Site	event|name
+ResearchSpace Name - Sampling Site	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
+Sampling Site	P3 has note	Sampling Site Comment
+Sampling Site	P67i is referred to by	Description#-3
+//end sg2-5-5
+
+Sampling Site	P56i is found on	Painting	digital2|object
+Sampling Site	P156 occupies	Sampling Place
+Sampling Site	rso:PX_has_main_representation	Image Annotation	|digital2
+
+//subgraph //Image Annotation
+Image Annotation	P1 is identified by	ResearchSpace Name - Image Annotation	event|name
+ResearchSpace Name - Image Annotation	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
+Image Annotation	dig:L49 is primary area of	Painting - Annotation Image
+Image Annotation	P190 has symbolic content	Annotation Text	|literal
+Annotation Text	tooltip	Is automatically used to define the name of the Sample
+//end sg2-5-5
+
+//subgraph //Sample
+Sample	P1 is identified by	ResearchSpace Name - Sample	|name
+ResearchSpace Name - Sample	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
+Sample	P48 has preferred identifier	Preferred identifier (IGSN)	|url
+Preferred identifier (IGSN)	tooltip	An IGSN is the planned preferred identifier, but this has not been implemented yet.
+Sample	P1 is identified by	Sample Number (or other identifiers)	|name
+Sample	P2 has type	Inorganic or Organic	|type
+Sample	P2 has type	Sample types	|type
+Sample	P2 has type	Sample format	|type
+Sample	P43 has dimension	Size term	|type
+Sample	P67i is referred to by	Description	|io
+Sample	rso:PX_has_main_representation	Sample image	|digital2
+Sample	P138i has representation	Other Sample image#-1	|digital2
+Sample	P52 has current owner	Owner	|actor
+Sample	P50 has current keeper	Keeper	|actor
+Sample	P55 has current location	Sample Location	|place
+Sample	P54 has current permanent location	Sample Storage	|place
+Sample	P70i is documented in	Reports, Documents and Summaries#-4	|document
+//end sg2-5-5
