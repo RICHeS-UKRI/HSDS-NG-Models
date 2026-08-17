@@ -1,45 +1,45 @@
 //Flowchart LR
 
-//subgraph //Painting
+// Painting
 Painting	tooltip	Please note that it is possible that the sample site may be connected directly to a part of an object as well as the full object. object|
 Painting	rso:PX_has_main_representation	Painting - Annotation Image	|digital2
 Painting	P138i has representation	Painting - Annotation Image	|digital2
 Painting - Annotation Image	tooltip	This image may or may not be the main image, but it will be the one that has been selected to be the foundation of annotations of this type.
 Painting	P70i is documented in	Reports, Documents and Summaries#-1	|document
-//end sg2-5-5
 
-//subgraph //Sampling Activity
+//Sampling Activity
 Sampling Activity	P1 is identified by	ResearchSpace Name - Sample Activity	event|name
 ResearchSpace Name - Sample Activity	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
 Sampling Activity	P48 has preferred identifier	Preferred identifier#-1	|url
 Preferred identifier#-1	tooltip	Optional local or externally resolving ID - additional IDs may not be required.
 Sampling Activity	P1 is identified by	Other identifiers#-1	|name
+Sampling Activity	P9 consists of	Sample Taking	event|event
 Sampling Activity	P17 was motivated by	Reason for Sampling	|po
 Sampling Activity	P67i is referred to by	Description#-1	|io
+Sampling Activity	P4 has time-span	Time-Span	|period
 Sampling Activity	P33 used specific technique	Sampling Procedure	|document
+Sampling Activity	P16 used specific object	Painting	|object
 Sampling Activity	P70i is documented in	Reports, Documents and Summaries#-2	|document
 Sampling Activity	P01i is domain of	PC14 carried out by	|actor_bn
 PC14 carried out by	P02 has range	Analyst#-1	|actor
-//end sg2-5-5
 
-Sampling Activity	P16 used specific object	Painting	|object
-Sampling Activity	P9 consists of	Sample Taking	|event
-Sampling Activity	P4 has time-span	Time-Span	|period
-
-//subgraph //timespan
+//timespan
 Time-Span	P1 is identified by	ResearchSpace Name - Time-Span	event|name
 ResearchSpace Name - Time-Span	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
 Time-Span	P82 at some time within	Event Date	|literal
 Time-Span	P82a begin of the begin	Event Date	|literal
 Time-Span	P82b end of the end	Event Date	|literal
-//end sg2-5-10
 
-//subgraph //Sample Taking
+//Sample Taking
 Sample Taking	P1 is identified by	ResearchSpace Name - Sample Taking	event|name
 ResearchSpace Name - Sample Taking	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
 Sample Taking	P48 has preferred identifier	Preferred identifier#-2	event|url
 Preferred identifier#-2	tooltip	Optional local or externally resolving ID - additional IDs may not be required.
 Sample Taking	P1 is identified by	Other identifiers#-2	|name
+Sample Taking	O5 removed	Sample	event|object
+Sample Taking	O3 sampled from	Painting	|object
+Sample Taking	O3 sampled from	Sampling Site	|digital2
+Sample Taking	O4 sampled at	Sampling Place	|place
 Sample Taking	P7 took place at	Organisation#-1	|place
 Sample Taking	P70i is documented in	Reports, Documents and Summaries#-5	|document
 
@@ -52,33 +52,24 @@ Sample Taking	P33 used specific technique	Sampling Procedure#-2	|document
 Sample Taking	P4 has time-span	Time-Span	|period
 Sample Taking	P01i is domain of	PC14 carried out by#-2	|actor_bn
 PC14 carried out by#-2	P02 has range	Analyst#-2	|actor
-//end sg2-5-5
 
-Sample Taking	O3 sampled from	Sampling Site	|digital2
-Sample Taking	O4 sampled at	Sampling Place	|place
-Sample Taking	O5 removed	Sample	event|object
-Sample Taking	O3 sampled from	Painting	|object
-
-//subgraph //Sampling Site
+//Sampling Site
 Sampling Site	P1 is identified by	ResearchSpace Name - Sampling Site	event|name
 ResearchSpace Name - Sampling Site	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
+Sampling Site	P56i is found on	Painting	digital2|object
+Sampling Site	rso:PX_has_main_representation	Image Annotation	|digital2
+Sampling Site	P156 occupies	Sampling Place
 Sampling Site	P3 has note	Sampling Site Comment
 Sampling Site	P67i is referred to by	Description#-3
-//end sg2-5-5
 
-Sampling Site	P56i is found on	Painting	digital2|object
-Sampling Site	P156 occupies	Sampling Place
-Sampling Site	rso:PX_has_main_representation	Image Annotation	|digital2
-
-//subgraph //Image Annotation
+//Image Annotation
 Image Annotation	P1 is identified by	ResearchSpace Name - Image Annotation	event|name
 ResearchSpace Name - Image Annotation	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
 Image Annotation	dig:L49 is primary area of	Painting - Annotation Image
 Image Annotation	P190 has symbolic content	Annotation Text	|literal
 Annotation Text	tooltip	Is automatically used to define the name of the Sample
-//end sg2-5-5
 
-//subgraph //Sample
+//Sample
 Sample	P1 is identified by	ResearchSpace Name - Sample	|name
 ResearchSpace Name - Sample	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
 Sample	P48 has preferred identifier	Preferred identifier (IGSN)	|url
@@ -96,4 +87,24 @@ Sample	P50 has current keeper	Keeper	|actor
 Sample	P55 has current location	Sample Location	|place
 Sample	P54 has current permanent location	Sample Storage	|place
 Sample	P70i is documented in	Reports, Documents and Summaries#-4	|document
+
+//subgraph //Sample Splitting
+Sample Splitting	P1 is identified by	ResearchSpace Name - Sample Splitting	event|name
+ResearchSpace Name - Sample Splitting	tooltip	required pattern for all things - P1 - E41, E1 - P2 primary appellation, E41 - P190 - value
+Sample Splitting	P48 has preferred identifier	Preferred identifier#-3	event|url
+Sample Splitting	P1 is identified by	Other identifiers#-3	|name
+Sample Splitting	P7 took place at	Organisation#-2	|place
+Sample Splitting	P17 was motivated by	Reason for Splitting	|po
+Sample Splitting	P67i is referred to by	Description#-5	|io
+Sample Splitting	P33 used specific technique	Splitting Procedure	|document
+Sample Splitting	P70i is documented in	Reports, Documents and Summaries#-6	|document
+Sample Splitting	P4 has time-span	Time-Span#-2	|period
+Sample Splitting	P01i is domain of	PC14 carried out by#-3	|actor_bn
+PC14 carried out by#-3	P02 has range	Analyst#-3	|actor
 //end sg2-5-5
+
+Sample Splitting	O27 split	Sample	event|object
+Sample Splitting	O29 removed sub-sample	Sample#-2	event|object
+Sample#-2	tooltip	A sub-sample is an S13 Sample in its own right, using the identical field set to Sample. It has NO Sampling Site of its own - its link to the Painting is derived by walking O29i/O27 back to the root Sample, then O5i/O3 to that Sample's Sampling Site.
+Sample Splitting	tooltip	S24 Sample Splitting, a subclass of S2 Sample Taking. O27 split is a subproperty of O3 sampled from; O29 removed sub-sample is a subproperty of O5 removed. Deliberately does NOT carry O3 to the Painting or Sampling Site - O3 implies O1 diminished, which would falsely record the painting being diminished again.
+//Sampling Activity	P9 consists of	Sample Splitting	|event
